@@ -10,10 +10,9 @@ jogo2 = Jogo('GoW', 'Rack n Slash', 'PS2')
 jogo3 = Jogo('MK', 'Luta', 'PS2')
 lista = [jogo1, jogo2, jogo3]
         
-        
 app = Flask(__name__)
-@app.route('/inicio')
-def ola():
+@app.route('/')
+def index():
     return render_template('lista.html', titulo='Jogos', jogos=lista)
 
 @app.route('/novo')
@@ -28,4 +27,4 @@ def criar():
     jogo = Jogo(nome, categoria, console)
     lista.append(jogo)
     return render_template('lista.html',titulo='Jogos', jogos=lista)
-app.run()
+app.run(debug=True)
